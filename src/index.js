@@ -80,8 +80,15 @@ class App extends React.Component {
             <SearchBar getAlbums={this.getAlbums} />
         </div>
         <div className="row">
-            <AlbumList albums={this.state.albums} getTracks={this.getTracks} />
-            <TrackList album={this.state.album} tracks={this.state.tracks} playPreview={this.playPreview} />
+            <AlbumList
+                albums={this.state.albums}
+                getTracks={this.getTracks}
+            />
+            <TrackList
+                album={this.state.album}
+                tracks={this.state.tracks}
+                playPreview={this.playPreview}
+            />
         </div>
       </div>
     );
