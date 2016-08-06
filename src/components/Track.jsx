@@ -35,6 +35,7 @@ Track.styles = {
     padding: '0.2em',
     listStyleType: 'none',
     backgroundColor: mouseOutColor,
+    cursor: "pointer",
   },
 };
 
