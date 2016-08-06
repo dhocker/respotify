@@ -7,20 +7,22 @@ const Album = (props) => {
         src={props.album.images[1].url}
         alt={props.album.name}
         style={Album.styles.img}
+        onClick={() => props.getTracks(props.album.id)}
       />
+      <p>{props.album.name}</p>
     </li>
   );
 };
 
 Album.propTypes = {
   album: React.PropTypes.object.isRequired,
+  getTracks: React.PropTypes.func.isRequired,
 };
 
 Album.styles = {
   img: {
-    maxWidth: '150px',
-    maxHeight: '150px',
-    marginBottom: '1em',
+    width: '60%',
+    height: '60%',
   },
 };
 
