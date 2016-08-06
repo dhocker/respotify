@@ -42,7 +42,7 @@ SearchBar.propTypes = {
 
 SearchBar.styles = {
   div: {
-    margin: 30,
+    marginBottom: 30,
     textAlign: 'left',
   },
   input: {

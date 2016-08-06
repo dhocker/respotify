@@ -32,6 +32,9 @@ AlbumList.styles = {
     textAlign: 'left',
     maxHeight: '75vh',
     overflowY: 'auto',
+    border: '2px solid',
+    borderRadius: '10px',
+    padding: '10px',
   },
   ul: {
     listStyle: 'none',

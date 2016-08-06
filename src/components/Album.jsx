@@ -23,7 +23,7 @@ Album.styles = {
   img: {
     width: '60%',
     height: '60%',
-    cursor: "pointer",
+    cursor: 'pointer',
   },
 };
 
