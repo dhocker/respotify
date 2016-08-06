@@ -46,6 +46,7 @@ class App extends React.Component {
 
   processTracks(payload) {
     this.setState({
+      album: payload.name,
       tracks: payload.tracks.items,
     });
   }
@@ -75,9 +76,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar getAlbums={this.getAlbums} />
-        <AlbumList albums={this.state.albums} getTracks={this.getTracks} />
-        <TrackList tracks={this.state.tracks} playPreview={this.playPreview} />
+        <div className="row">
+            <SearchBar getAlbums={this.getAlbums} />
+        </div>
+        <div className="row">
+            <AlbumList albums={this.state.albums} getTracks={this.getTracks} />
+            <TrackList album={this.state.album} tracks={this.state.tracks} playPreview={this.playPreview} />
+        </div>
       </div>
     );
   }

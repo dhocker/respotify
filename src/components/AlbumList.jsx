@@ -29,8 +29,6 @@ AlbumList.propTypes = {
 
 AlbumList.styles = {
   div: {
-    width: 300,
-    marginLeft: 30,
     textAlign: 'left',
     maxHeight: '75vh',
     overflowY: 'auto',

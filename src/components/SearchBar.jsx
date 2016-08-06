@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div style={SearchBar.styles.div}>
+      <div className="col-md-12" style={SearchBar.styles.div}>
         <h3>Search for an Artist</h3>
         <input
           onChange={this.handleInputChange}
