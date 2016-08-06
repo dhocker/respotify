@@ -97,5 +97,5 @@ class App extends React.Component {
 
 ReactDOM.render(
   <App />,
-  document.getElementById('container')
+  document.getElementById('root')
 );

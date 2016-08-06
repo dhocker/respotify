@@ -14,10 +14,12 @@ const AlbumList = (props) => {
     <Album key={album.id} album={album} getTracks={props.getTracks} />);
 
   return (
-    <div className="col-md-3" style={AlbumList.styles.div}>
-      <ul style={AlbumList.styles.ul}>
-        {albums}
-      </ul>
+    <div className="col-md-3">
+      <div style={AlbumList.styles.div}>
+        <ul style={AlbumList.styles.ul}>
+          {albums}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -32,8 +34,7 @@ AlbumList.styles = {
     textAlign: 'left',
     maxHeight: '75vh',
     overflowY: 'auto',
-    border: '2px solid',
-    borderRadius: '10px',
+    border: '3px solid gray',
     padding: '10px',
   },
   ul: {
