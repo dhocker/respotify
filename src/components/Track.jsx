@@ -1,3 +1,11 @@
+/*
+React Tutorial
+http://patternhatch.com/2016/08/02/a-primer-on-the-react-ecosystem-part-2-of-3/
+
+Ideas for improvement:
+    Highlight currently playing track
+*/
+
 import React from 'react';
 
 const mouseOverColor = '#ADD8E6';
