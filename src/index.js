@@ -1,15 +1,40 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Greeting from './greeting';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SearchBar from './components/SearchBar';
+import AlbumList from './components/AlbumList';
+import * as musicApi from './api/musicApi';
 
-const greeting = (t) => {
-    console.log(`Hello! The time is ${t}!`);
-};
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = ({
+      albums: [],
+    });
+    this.getAlbums = this.getAlbums.bind(this);
+    this.processAlbums = this.processAlbums.bind(this);
+  }
 
-var d = new Date();
-greeting(d.toISOString());
+  getAlbums(artist) {
+    musicApi.getAlbums(artist, this.processAlbums);
+  }
+
+  processAlbums(payload) {
+    this.setState({
+      albums: payload.albums.items,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar getAlbums={this.getAlbums} />
+        <AlbumList albums={this.state.albums} />
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-    <Greeting time={d.toISOString()}/>,
-    document.getElementById('container')
+  <App />,
+  document.getElementById('container')
 );
