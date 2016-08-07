@@ -20,7 +20,7 @@ class App extends React.Component {
       albums: [],
       tracks: [],
       currentPreview: null,
-      previewUrl: '',
+      previewTrack: null,
     });
     this.getAlbums = this.getAlbums.bind(this);
     this.processAlbums = this.processAlbums.bind(this);
@@ -31,10 +31,16 @@ class App extends React.Component {
 
   getAlbums(artist) {
     musicApi.getAlbums(artist, this.processAlbums);
+    if (this.state.previewTrack) {
+      this.playPreview(this.state.previewTrack);
+    }
   }
 
   getTracks(albumId) {
     musicApi.getTracks(albumId, this.processTracks);
+    if (this.state.previewTrack) {
+      this.playPreview(this.state.previewTrack);
+    }
   }
 
   processAlbums(payload) {
@@ -49,29 +55,31 @@ class App extends React.Component {
     this.setState({
       album: payload.name,
       tracks: payload.tracks.items,
+      previewTrack: null,
     });
   }
 
-  playPreview(previewUrl) {
+  playPreview(track) {
     if (this.state.currentPreview) {
       const curAudioObject = this.state.currentPreview;
       curAudioObject.pause();
     }
 
-    if (this.state.previewUrl !== previewUrl) {
-      const newAudioObject = new Audio(previewUrl);
+    if (this.state.previewTrack !== track) {
+      const newAudioObject = new Audio(track.preview_url);
       this.setState({
         currentPreview: newAudioObject,
-        previewUrl: previewUrl,
+        previewTrack: track,
       });
 
       newAudioObject.play();
     } else {
       this.setState({
         currentPreview: null,
-        previewUrl: '',
+        previewTrack: null,
       });
     }
+    this.forceUpdate();
   }
 
   render() {
@@ -89,6 +97,7 @@ class App extends React.Component {
                 album={this.state.album}
                 tracks={this.state.tracks}
                 playPreview={this.playPreview}
+                previewTrack={this.state.previewTrack}
             />
         </div>
       </div>

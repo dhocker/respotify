@@ -45,4 +45,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }};
+  },
+	devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
+	plugins: [
+		new webpack.NoErrorsPlugin()
+	]
+};
