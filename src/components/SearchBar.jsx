@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="col-md-12" style={SearchBar.styles.div}>
+      <div className="col-md-6" style={SearchBar.styles.div}>
         <h3>Search for an Artist</h3>
         <input
           onChange={this.handleInputChange}
@@ -46,7 +46,7 @@ SearchBar.styles = {
     textAlign: 'left',
   },
   input: {
-    width: '40%',
+    width: '80%',
   },
 };
 
