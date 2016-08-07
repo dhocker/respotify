@@ -21,6 +21,7 @@ class App extends React.Component {
       tracks: [],
       currentPreview: null,
       previewTrack: null,
+      previewTrackInstance: null,
     });
     this.getAlbums = this.getAlbums.bind(this);
     this.processAlbums = this.processAlbums.bind(this);
@@ -59,10 +60,11 @@ class App extends React.Component {
     });
   }
 
-  playPreview(track) {
+  playPreview(trackInstance, track) {
     if (this.state.currentPreview) {
       const curAudioObject = this.state.currentPreview;
       curAudioObject.pause();
+      this.state.previewTrackInstance.clearTrackPlay();
     }
 
     if (this.state.previewTrack !== track) {
@@ -70,6 +72,7 @@ class App extends React.Component {
       this.setState({
         currentPreview: newAudioObject,
         previewTrack: track,
+        previewTrackInstance: trackInstance,
       });
 
       newAudioObject.play();
@@ -97,7 +100,6 @@ class App extends React.Component {
                 album={this.state.album}
                 tracks={this.state.tracks}
                 playPreview={this.playPreview}
-                previewTrack={this.state.previewTrack}
             />
         </div>
       </div>

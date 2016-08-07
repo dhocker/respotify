@@ -7,7 +7,6 @@ const TrackList = (props) => {
       key={track.id}
       track={track}
       playPreview={props.playPreview}
-      isPreviewTrack={props.previewTrack && (props.previewTrack.id === track.id)}
     />);
 
   return (

@@ -10,17 +10,40 @@ import React from 'react';
 
 const mouseOverColor = '#ADD8E6';
 const mouseOutColor = 'white';
-const previewColor = 'green';
+const previewTrackColor = 'lightgreen';
 
 class Track extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      backgroundColor: mouseOutColor,
+    };
+
+    this.clearTrackPlay = this.clearTrackPlay.bind(this);
     this.onToggleTrackPlay = this.onToggleTrackPlay.bind(this);
   }
 
-  onToggleTrackPlay(event) {
-    // If a track is playing,
-    this.props.playPreview(this.props.track);
+  onToggleTrackPlay(/* event */) {
+    this.props.playPreview(this, this.props.track);
+    if (this.state.backgroundColor === previewTrackColor) {
+      this.setState({
+        backgroundColor: mouseOutColor,
+      });
+      this.trackInstance.style.background = mouseOutColor;
+    } else {
+      this.setState({
+        backgroundColor: previewTrackColor,
+      });
+      this.trackInstance.style.background = previewTrackColor;
+    }
+  }
+
+  clearTrackPlay() {
+    this.setState({
+      backgroundColor: mouseOutColor,
+    });
+    this.trackInstance.style.background = mouseOutColor;
   }
 
   render() {
@@ -28,8 +51,9 @@ class Track extends React.Component {
       <li
         style={Track.styles.li}
         onMouseOver={(e) => { e.target.style.backgroundColor = mouseOverColor; }}
-        onMouseOut={(e) => { e.target.style.backgroundColor = mouseOutColor; }}
+        onMouseOut={(e) => { e.target.style.backgroundColor = this.state.backgroundColor; }}
         onClick={this.onToggleTrackPlay}
+        ref={(ref) => { this.trackInstance = ref; }}
       >
         {this.props.track.name}
       </li>
