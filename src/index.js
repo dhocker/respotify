@@ -80,9 +80,9 @@ class App extends React.Component {
       this.setState({
         currentPreview: null,
         previewTrack: null,
+        previewTrackInstance: null,
       });
     }
-    this.forceUpdate();
   }
 
   render() {
