@@ -107,6 +107,9 @@ class App extends React.Component {
   }
 }
 
+/*
+  Essentially, this is the "main" for the single page app
+*/
 ReactDOM.render(
   <App />,
   document.getElementById('root')
