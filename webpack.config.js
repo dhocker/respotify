@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
   app: './src/index.js',
@@ -46,8 +47,14 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-	devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
-	plugins: [
-		new webpack.NoErrorsPlugin()
-	]
+    devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
+    plugins: [
+        new webpack.NoErrorsPlugin(),
+        new CopyWebpackPlugin([
+            { from: 'src/static', to: 'static' }
+        ],
+        {
+            copyUnmodified: true
+        })
+    ]
 };
